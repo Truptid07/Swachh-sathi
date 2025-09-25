@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swatch Sathi - Select Your Role</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="trial1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double+Ink:wght@100..900&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Lobster&family=Pacifico&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double+Ink:wght@100..900&family=DM+Serif+Text:ital@0;1&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Libertinus+Keyboard&family=Lobster&family=Pacifico&family=Rye&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-animation"></div>
+
+    <header class="header">
+        <div class="logo">
+            <img src="images.jpeg" alt="Swatch Sathi Logo">
+            <h1>Swatch Sathi</h1>
+        </div>
+    </header>
+
+    <div id="auth-view">
+        <main class="main-content">
+            <div class="role-selection-card">
+                <h2>Select Your Role</h2>
+                <p>Please choose your role to proceed to the dashboard.</p>
+                <div class="role-buttons">
+                    <button class="role-button citizen">
+                        <i class="fas fa-users"></i> <span>Citizen</span>
+                    </button>
+                    <button class="role-button worker">
+                        <i class="fas fa-hard-hat"></i> <span>Worker</span>
+                    </button>
+                    <button class="role-button admin">
+                        <i class="fas fa-shield-alt"></i> <span>Admin</span>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    <div id="role-auth-view" class="hidden">
+        <div class="role-selection-card">
+            <div id="login-form-container">
+                <h2 id="auth-title">Login</h2>
+                <form id="login-form" class="space-y-4">
+                    <input type="email" name="login-email" placeholder="Email" required class="w-full p-2 border rounded">
+                    <input type="password" name="login-password" placeholder="Password" required class="w-full p-2 border rounded">
+                    <button type="submit" class="w-full p-2 bg-blue-500 text-white rounded">Login</button>
+                    <a href="#" id="show-signup" class="text-blue-500">Don't have an account? Sign Up</a>
+                </form>
+            </div>
+            <div id="signup-form-container" class="hidden">
+                <h2 id="signup-title">Sign Up</h2>
+                <form id="signup-form" class="space-y-4">
+                     <input type="text" name="signup-name" placeholder="Full Name" required class="w-full p-2 border rounded">
+                    <input type="email" name="signup-email" placeholder="Email" required class="w-full p-2 border rounded">
+                    <input type="password" name="signup-password" placeholder="Password" required class="w-full p-2 border rounded">
+                    <button type="submit" class="w-full p-2 bg-green-500 text-white rounded">Sign Up</button>
+                    <a href="#" id="show-login" class="text-blue-500">Already have an account? Login</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="content-view" class="hidden w-full max-w-6xl p-4">
+        </div>
+
+    <div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <p id="modal-message"></p>
+            <div class="mt-4">
+                <button id="modal-ok" class="px-4 py-2 bg-blue-500 text-white rounded">OK</button>
+                <button id="modal-confirm" class="hidden px-4 py-2 bg-green-500 text-white rounded">Confirm</button>
+                <button id="modal-cancel" class="hidden px-4 py-2 bg-gray-300 rounded">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="complaint-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+      <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full relative">
+        <button id="close-complaint-modal" class="absolute top-2 right-2 text-2xl font-bold">&times;</button>
+        <div id="complaint-modal-content"></div>
+      </div>
+    </div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Make sure Mapbox scripts load before your main script -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+    
+    <script>
+        // Set Mapbox token explicitly in global scope to ensure it's available
+        mapboxgl.accessToken = 'pk.eyJ1IjoidHJ1cHRpMTkiLCJhIjoiY21lMzcwODVzMDRueTJsczhpaHYyYzlqbSJ9.krw31KDYmNR-N3y1rsLBmQ';
+        console.log("Mapbox token set in HTML:", mapboxgl.accessToken);
+    </script>
+    
+    <script type="module" src="trial1.js"></script>
+
+</body>
+</html>

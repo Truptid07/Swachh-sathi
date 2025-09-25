@@ -1,0 +1,229 @@
+:root {
+    --primary-green: #4CAF50; /* Example green */
+    --secondary-blue: #2196F3; /* Example blue */
+    --admin-dark: #343a40; /* Example dark grey */
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --text-color-dark: #333;
+    --text-color-light: #666;
+    /* --shadow-light: rgba(0, 0, 0, 0.1); */
+    --shadow-dark: rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Example approachable font */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-y:auto ; /* For background animations */
+    background: linear-gradient(135deg, #a8e063, #ffffff); /* Example gradient */
+    position: relative;
+    color: var(--text-color-dark);
+   
+}
+
+.background-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Behind content */
+    /* You'd use JavaScript for more complex animations here, or subtle CSS animations for elements */
+    /* Example: pseudo-elements for floating leaves */
+    background-image: url('data:image/svg+xml;utf8,<svg ... recycling symbols and leaves ...</svg>'); /* Placeholder */
+    background-size: cover;
+    opacity: 1;
+    animation: backgroundFadeIn 2s ease-out;
+}
+
+@keyframes backgroundFadeIn {
+    from { opacity: 0; }
+    to { opacity: 0.7; }
+}
+
+.header {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    margin-bottom: 80px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 40px; /* Adjust as needed */
+    width: auto;
+    
+}
+
+.logo h1 {
+    font-size: 28px;
+    color: #fff; /* White text for logo if background is dark */
+    margin: 0;
+     font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: black;
+  font-weight: bolder;
+}
+
+.main-content{
+    opacity: 0.9;
+}
+.role-selection-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 
+        10px 10px 20px var(--shadow-light), 
+        -10px -10px 20px rgba(255, 255, 255, 0.8); /* Neumorphism-style shadows */
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: fadeIn 1s ease-out forwards, floatCard 3s ease-in-out infinite alternate;
+    opacity: 0; /* Start invisible for fade-in */
+    transform: translateY(20px); /* Start slightly below for fade-in */
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatCard {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+
+.role-selection-card h2 {
+    font-size: 28px;
+    color: var(--text-color-dark);
+    margin-bottom: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    color: black;
+}
+
+.role-selection-card p {
+    font-size: 16px;
+    color: var(--text-color-light);
+    margin-bottom: 30px;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-weight: 500;
+color: black;
+}
+
+.role-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap; /* For responsiveness */
+}
+
+.role-button {
+    background: linear-gradient(145deg, #f0f0f0, #e0e0e0); /* Neumorphism base */
+    border: none;
+    border-radius: 15px;
+    padding: 15px 30px;
+    display: flex;
+    flex-direction: column; /* Icon above text */
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        5px 5px 10px black;
+    position: relative;
+    overflow: hidden;
+}
+
+.role-button i {
+    font-size: 30px; /* Icon size */
+    transition: transform 0.3s ease;
+}
+
+/* Specific button styles */
+.role-button.citizen { color: var(--secondary-blue); }
+.role-button.worker { color: var(--primary-green); }
+.role-button.admin { color: var(--admin-dark); }
+
+/* Hover effects */
+.role-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        8px 8px 15px var(--shadow-light), 
+        -8px -8px 15px rgba(255, 255, 255, 0.7),
+        0 0 15px rgba(var(--button-glow-color), 0.7); /* Glow effect */
+}
+
+.role-button:hover i {
+    transform: scale(1.1) translateY(-2px); /* Subtle bounce */
+}
+
+/* Active/selected state (if applicable) */
+.role-button:active {
+    box-shadow: inset 3px 3px 7px var(--shadow-light), inset -3px -3px 7px rgba(255, 255, 255, 0.7);
+    transform: translateY(0);
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .role-selection-card {
+        padding: 30px;
+        margin: 20px;
+    }
+    .role-selection-card h2 {
+        font-size: 24px;
+    }
+    .role-selection-card p {
+        font-size: 14px;
+    }
+    .role-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .role-button {
+        width: 180px; /* Adjust button width */
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+}
+
+nav{
+    margin-top: 50px;
+    height: 100px;
+    
+}
+
+#content-view div div div{
+    background-color: white;
+}
+
+/* Ensure the map container is visible and properly sized */
+#map {
+    width: 100%;
+    height: 400px;
+    border-radius: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+nav span{
+   font-weight: bold;
+}
