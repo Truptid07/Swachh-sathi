@@ -63,12 +63,32 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
+        .language-selector {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+        .lang-button {
+            padding: 5px 10px;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+            color: black;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-button:hover {
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
     <div class="background-animation"></div>
 
-    <header class="header">
+    <header class="header" style="position: relative;">
         <div class="logo">
             <img src="images.jpeg" alt="Swachh Sathi Logo">
             <h1>Swachh Sathi</h1>
@@ -193,5 +213,6 @@
         </div>
     </footer>
 
+    <script src="proposals-language.js"></script>
 </body>
 </html>
