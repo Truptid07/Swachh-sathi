@@ -1,0 +1,10 @@
+/* CSS without language selector styles */
+/* This removes the language selector and dropdown styling */
+.language-selector {
+    display: none !important;
+}
+.dropdown-container, 
+.dropdown-button, 
+.dropdown-content {
+    display: none !important;
+}
